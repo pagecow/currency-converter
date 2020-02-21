@@ -26,12 +26,14 @@ app.post('/api/ecb/forex/stats', async(req, res) => {
                     console.log(envelope)
                     let cube = await envelope.Cube
                     console.log(cube)
-                    let myCube = await cube.forEach(element => {
-                        let rate = element.rate
-                        // document.querySelector('rate');
-                        let currency = element.currency
-                        // document.querySelector('currency');
-                        return '1$euro;='+ rate + currency;
+                    let myCube = await cube[0].Cube.forEach(element => {
+                        // let rate = element.rate
+                        console.log("el", element)
+                        console.log("at",element.Cube)
+                       
+                        // let currency = element.currency
+                        
+                        // return '1$euro;='+ rate + currency;
                     });
                     console.log(myCube)
                 }
