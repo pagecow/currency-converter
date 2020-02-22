@@ -17,7 +17,7 @@ class App extends React.Component {
 
   componentDidMount = () => {
     axios
-      .post('/api/ecb/forex/stats', {base_currency: this.state.base_currency, base_amount: this.state.target_amount, target_currency: this.state.target_currency})
+      .post('/api/ecb/forex/stats', {base_currency: this.state.base_currency, base_amount: this.state.base_amount, target_currency: this.state.target_currency})
       .then(res => {
         console.log(res.data)
         this.setState({
