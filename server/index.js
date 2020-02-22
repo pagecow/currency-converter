@@ -20,22 +20,13 @@ app.post('/api/ecb/forex/stats', async(req, res) => {
         res.on('end', async function(){
             parser.parseString(data, async function(error, result) {
                 if(error === null) {
-                    let res = await result;
-                    console.log(res);
-                    let envelope = await res['gesmes:Envelope']
-                    console.log(envelope)
-                    let cube = await envelope.Cube
-                    console.log(cube)
-                    let myCube = await cube[0].Cube.forEach(element => {
-                        // let rate = element.rate
-                        console.log("el", element)
-                        console.log("at",element.Cube)
+                    let cube = await result['gesmes:Envelope'].Cube[0].Cube.forEach(element => {
+                    console.log("at",element.Cube)
                        
-                        // let currency = element.currency
+                    // let currency = element.currency
                         
-                        // return '1$euro;='+ rate + currency;
+                    // return '1$euro;='+ rate + currency;
                     });
-                    console.log(myCube)
                 }
                 else {
                     console.log(error);
