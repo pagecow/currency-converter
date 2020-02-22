@@ -34,7 +34,7 @@ app.post('/api/ecb/forex/stats', async(req, res) => {
             });
         });
     }) 
-    currencyInfo.push({ ATTR: { currency: 'EUR', rate: '1' } })
+    currencyInfo.unshift({ ATTR: { currency: 'EUR', rate: '1' } })
     console.log("answer", currencyInfo);
 
     currencyConverter = async (base_currency, base_amount, target_currency) => {
@@ -64,10 +64,20 @@ app.post('/api/ecb/forex/stats', async(req, res) => {
         }
 
         let target_amount = await targetAmount(targetBaseRate, baseRate, base_amount);
-        console.log(target_amount)
+        console.log("target_amount", target_amount)
+
+        return target_amount;
     }
+
+    let currencies = await currencyInfo.map(element => {
+        return element.ATTR.currency
+    })
+    console.log("currencies", currencies);
     
-    currencyConverter(base_currency, base_amount, target_currency);
+    let target_amount = await currencyConverter(base_currency, base_amount, target_currency);
+    console.log("target_amount", target_amount)
+
+    res.status(200).send({currencies: currencies, target_amount: target_amount.toString()});
 })
 
 const port = SERVER_PORT;

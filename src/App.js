@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-
 import './App.css';
 
 class App extends React.Component {
@@ -8,9 +7,11 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-        base_currency: 'GBP',
+        base_currencies: [],
+        base_currency: 'EUR',
         base_amount: '1',
-        target_currency: 'IDR',
+        target_currencies: [],
+        target_currency: 'USD',
         target_amount: '',
     }
   }
@@ -21,9 +22,12 @@ class App extends React.Component {
       .then(res => {
         console.log(res.data)
         this.setState({
-          target_amount: res.data
+          base_currencies: res.data.currencies,
+          target_currencies: res.data.currencies,
+          target_amount: res.data.target_amount,
         })
       })
+      .catch(err => console.log(err))
   }
 
   handleConversion = (base_currency, base_amount, target_currency) => {
@@ -32,17 +36,27 @@ class App extends React.Component {
 
 
   render() {
-    const {base_currency, base_amount, target_currency, target_amount} = this.state
+    const {base_currencies, base_currency, base_amount, target_currencies, target_currency, target_amount} = this.state
     
     return (
       <div className="App">
         <form>
-          <input placeholder={base_currency}/>
+          <select id="base_currencies" placeholder={base_currency}>
+          <option value="" disabled selected>EUR</option>
+            {base_currencies.map(element => 
+              <option>{element}</option>
+              )}
+          </select>
           <input placeholder={base_amount}/>
 
           <br/>
           
-          <input placeholder={target_currency}/>
+          <select id="target_currencies" placeholder={target_currency}>
+            <option value="" disabled selected>USD</option>
+            {target_currencies.map(element => 
+              <option>{element}</option>
+              )}
+          </select>
           <input placeholder={target_amount}/>
         </form>
       </div>
