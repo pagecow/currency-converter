@@ -8,9 +8,9 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-        base_currency: 'EUR',
+        base_currency: 'GBP',
         base_amount: '1',
-        target_currency: 'USD',
+        target_currency: 'IDR',
         target_amount: '',
     }
   }
