@@ -69,25 +69,35 @@ class App extends React.Component {
         </header>
         
         <body>
-          <form>
-            <select id="base_currencies" placeholder={base_currency} onChange={e => this.handleCurrencyConversion(e.target.value, target_currency)}>
-            <option value="" disabled selected>{base_currency}</option>
-              {base_currencies.map(element => 
-                <option value={element}>{element}</option>
-                )}
-            </select>
-            <input placeholder={base_amount} onChange={e => this.handleRateConversion(e.target.value)}/>
-
-            <br/>
+          <div id="currency-converter-box">
+            <div id="description">
+              <p className="heading-1">{base_amount.replace(/\B(?=(\d{3})+(?!\d))/g, ",")} {base_currency} equals</p>
+              <p className="heading-2">{parseFloat(target_amount).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")} {target_currency} </p>
+            </div>
             
-            <select id="target_currencies" placeholder={target_currency} onChange={e => this.handleCurrencyConversion(base_currency, e.target.value)}>
-              <option value="" disabled selected>{target_currency}</option>
-              {target_currencies.map(element => 
-                <option value={element}>{element}</option>
-                )}
-            </select>
-            <p>{parseFloat(target_amount).toFixed(2)}</p>
-          </form>
+            <div id="forms">
+              <form className="form-1">
+                <input placeholder={base_amount} onChange={e => this.handleRateConversion(e.target.value)}/>
+                <select id="base_currencies" placeholder={base_currency} onChange={e => this.handleCurrencyConversion(e.target.value, target_currency)}>
+                <option value="" disabled selected>{base_currency}</option>
+                  {base_currencies.map(element => 
+                    <option value={element}>{element}</option>
+                    )}
+                </select>
+              </form>
+                
+              <form className="form-2"> 
+                <p>{parseFloat(target_amount).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                <select id="target_currencies" placeholder={target_currency} onChange={e => this.handleCurrencyConversion(base_currency, e.target.value)}>
+                  <option value="" disabled selected>{target_currency}</option>
+                  {target_currencies.map(element => 
+                    <option value={element}>{element}</option>
+                    )}
+                </select>
+              </form>
+            </div>
+          </div>
+          
         </body>
         
       </div>

@@ -1,11 +1,18 @@
 .App {
-    height: 200vh;
+    height: 100vh;
+    width: 100vw;
 }
 
 a:link, a:visited, a:hover, a:active {
     text-decoration: none;
     color: inherit;
 }
+
+p {
+    margin: 0px;
+}
+
+/* header */
 
 header {
     display: flex;
@@ -36,4 +43,49 @@ header {
     font-weight: 400;
     line-height: 1.3em;
     letter-spacing: 0.4px;
+}
+
+/* body */
+
+body {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    height: 85vh;
+    width: 100%;
+}
+
+#currency-converter-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+    margin-left: 35%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 1px solid rgb(230,230,230);
+    border-radius: 6px;
+    font-family: Roboto,Arial,sans-serif;
+}
+
+#description {
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.heading-1 {
+    color: rgb(50,50,50);
+}
+
+.heading-2 {
+    font-size: 40px;
+    font-weight: normal;
+}
+
+#forms {
+    margin-left: 20px;
+}
+
+.form-2 {
+   display: flex;
 }
