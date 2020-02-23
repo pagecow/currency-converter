@@ -58,7 +58,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <form>
-          <select id="base_currencies" placeholder={base_currency} onChange={(e) => this.handleCurrencyConversion(e.target.value)}>
+          <select id="base_currencies" placeholder={base_currency} onChange={e => this.handleCurrencyConversion(e.target.value, target_currency)}>
           <option value="" disabled selected>{base_currency}</option>
             {base_currencies.map(element => 
               <option value={element}>{element}</option>
@@ -68,7 +68,7 @@ class App extends React.Component {
 
           <br/>
           
-          <select id="target_currencies" placeholder={target_currency}>
+          <select id="target_currencies" placeholder={target_currency} onChange={e => this.handleCurrencyConversion(base_currency, e.target.value)}>
             <option value="" disabled selected>{target_currency}</option>
             {target_currencies.map(element => 
               <option value={element}>{element}</option>
