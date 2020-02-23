@@ -57,25 +57,39 @@ class App extends React.Component {
     
     return (
       <div className="App">
-        <form>
-          <select id="base_currencies" placeholder={base_currency} onChange={e => this.handleCurrencyConversion(e.target.value, target_currency)}>
-          <option value="" disabled selected>{base_currency}</option>
-            {base_currencies.map(element => 
-              <option value={element}>{element}</option>
-              )}
-          </select>
-          <input placeholder={base_amount} onChange={e => this.handleRateConversion(e.target.value)}/>
+        <header>
+          <img src="http://www.mmsg.us/wp-content/uploads/2016/05/mmsg_no_caption_2.png" id="logo"/>
 
-          <br/>
-          
-          <select id="target_currencies" placeholder={target_currency} onChange={e => this.handleCurrencyConversion(base_currency, e.target.value)}>
-            <option value="" disabled selected>{target_currency}</option>
-            {target_currencies.map(element => 
-              <option value={element}>{element}</option>
-              )}
-          </select>
-          <p>{parseFloat(target_amount).toFixed(2)}</p>
-        </form>
+          <nav id="menu">
+            <a href="http://www.mmsg.us/"><p className="menu-items">HOME</p></a>
+            <a href="http://www.mmsg.us/management/"><p className="menu-items">LEADERSHIP</p></a>
+            <a href="http://www.mmsg.us/philosophy/"><p className="menu-items">PHILOSOPHY</p></a>
+            <a href="http://www.mmsg.us/testimonials/"><p className="menu-items">TESTIMONIALS</p></a>
+          </nav>
+        </header>
+        
+        <body>
+          <form>
+            <select id="base_currencies" placeholder={base_currency} onChange={e => this.handleCurrencyConversion(e.target.value, target_currency)}>
+            <option value="" disabled selected>{base_currency}</option>
+              {base_currencies.map(element => 
+                <option value={element}>{element}</option>
+                )}
+            </select>
+            <input placeholder={base_amount} onChange={e => this.handleRateConversion(e.target.value)}/>
+
+            <br/>
+            
+            <select id="target_currencies" placeholder={target_currency} onChange={e => this.handleCurrencyConversion(base_currency, e.target.value)}>
+              <option value="" disabled selected>{target_currency}</option>
+              {target_currencies.map(element => 
+                <option value={element}>{element}</option>
+                )}
+            </select>
+            <p>{parseFloat(target_amount).toFixed(2)}</p>
+          </form>
+        </body>
+        
       </div>
     );
   }

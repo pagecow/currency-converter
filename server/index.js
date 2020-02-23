@@ -11,7 +11,6 @@ app.use(express.json());
 
 app.post('/api/ecb/forex/stats', async(req, res) => {
     const {base_currency, base_amount, target_currency} = req.body;
-    console.log(base_currency, base_amount, target_currency);
 
     let currencyInfo = await new Promise((resolve, reject) => {
         https.get("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml", function(res) {
@@ -35,11 +34,8 @@ app.post('/api/ecb/forex/stats', async(req, res) => {
         });
     }) 
     currencyInfo.unshift({ ATTR: { currency: 'EUR', rate: '1' } })
-    console.log("answer", currencyInfo);
 
     currencyConverter = async (base_currency, base_amount, target_currency) => {
-        console.log("answer-2", currencyInfo)
-        console.log("base", base_currency)
         
         let baseRate = await currencyInfo.find(element => {
             if(element.ATTR.currency === base_currency){
@@ -47,7 +43,6 @@ app.post('/api/ecb/forex/stats', async(req, res) => {
             }
         })
         baseRate = baseRate.ATTR.rate;
-        console.log("baseRate", baseRate)
 
         let targetBaseRate = await currencyInfo.find(element => {
             if(element.ATTR.currency === target_currency){
@@ -55,7 +50,6 @@ app.post('/api/ecb/forex/stats', async(req, res) => {
             }
         })
         targetBaseRate = targetBaseRate.ATTR.rate;
-        console.log("targetBaseRate", targetBaseRate)
 
         targetAmount = async (targetBaseRate, baseRate, base_amount) => {
             let target_amount = (targetBaseRate/baseRate) * base_amount;
@@ -64,7 +58,6 @@ app.post('/api/ecb/forex/stats', async(req, res) => {
         }
 
         let target_amount = await targetAmount(targetBaseRate, baseRate, base_amount);
-        console.log("target_amount", target_amount)
 
         return target_amount;
     }
@@ -72,10 +65,8 @@ app.post('/api/ecb/forex/stats', async(req, res) => {
     let currencies = await currencyInfo.map(element => {
         return element.ATTR.currency
     })
-    console.log("currencies", currencies);
     
     let target_amount = await currencyConverter(base_currency, base_amount, target_currency);
-    console.log("target_amount", target_amount)
 
     res.status(200).send({currencies: currencies, target_amount: target_amount.toString()});
 })
