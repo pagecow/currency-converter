@@ -12,31 +12,17 @@ class App extends React.Component {
         base_amount: '1',
         target_currencies: [],
         target_currency: 'USD',
-        target_amount: '',
+        target_amount: '1.08',
     }
   }
 
   componentDidMount = () => {
-    axios
-      .post('/api/ecb/forex/stats', {base_currency: this.state.base_currency, base_amount: this.state.base_amount, target_currency: this.state.target_currency})
-      .then(res => {
-        console.log(res.data)
-        this.setState({
-          base_currencies: res.data.currencies,
-          target_currencies: res.data.currencies,
-          target_amount: res.data.target_amount,
-        })
-      })
-      .catch(err => console.log(err))
+      this.axiosPost(this.state.base_currency, this.state.base_amount, this.state.target_currency);
   }
 
-  handleConversion = async (base_amount) => {
-    this.setState({
-      base_amount
-    })
-
+  axiosPost = async (base_currency, base_amount, target_currency) => {
     axios
-      .post('/api/ecb/forex/stats', {base_currency: this.state.base_currency, base_amount: base_amount, target_currency: this.state.target_currency})
+      .post('/api/ecb/forex/stats', {base_currency, base_amount, target_currency})
       .then(res => {
         console.log(res.data)
         this.setState({
@@ -45,7 +31,24 @@ class App extends React.Component {
           target_amount: res.data.target_amount,
         })
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
+  }
+
+  handleRateConversion = async (base_amount) => {
+    this.setState({
+      base_amount
+    });
+
+    this.axiosPost(this.state.base_currency, base_amount, this.state.target_currency);
+  }
+
+  handleCurrencyConversion = async (base_currency, target_currency) => {
+    this.setState({
+      base_currency,
+      target_currency
+    });
+
+    this.axiosPost(base_currency, this.state.base_amount, target_currency);
   }
 
 
@@ -55,23 +58,23 @@ class App extends React.Component {
     return (
       <div className="App">
         <form>
-          <select id="base_currencies" placeholder={base_currency}>
-          <option value="" disabled selected>EUR</option>
+          <select id="base_currencies" placeholder={base_currency} onChange={(e) => this.handleCurrencyConversion(e.target.value)}>
+          <option value="" disabled selected>{base_currency}</option>
             {base_currencies.map(element => 
-              <option>{element}</option>
+              <option value={element}>{element}</option>
               )}
           </select>
-          <input placeholder={base_amount} onChange={e => this.handleConversion(e.target.value)}/>
+          <input placeholder={base_amount} onChange={e => this.handleRateConversion(e.target.value)}/>
 
           <br/>
           
           <select id="target_currencies" placeholder={target_currency}>
-            <option value="" disabled selected>USD</option>
+            <option value="" disabled selected>{target_currency}</option>
             {target_currencies.map(element => 
-              <option>{element}</option>
+              <option value={element}>{element}</option>
               )}
           </select>
-          <input placeholder={parseFloat(target_amount).toFixed(2)}/>
+          <p>{parseFloat(target_amount).toFixed(2)}</p>
         </form>
       </div>
     );
