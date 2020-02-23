@@ -30,8 +30,22 @@ class App extends React.Component {
       .catch(err => console.log(err))
   }
 
-  handleConversion = (base_currency, base_amount, target_currency) => {
+  handleConversion = async (base_amount) => {
+    this.setState({
+      base_amount
+    })
 
+    axios
+      .post('/api/ecb/forex/stats', {base_currency: this.state.base_currency, base_amount: base_amount, target_currency: this.state.target_currency})
+      .then(res => {
+        console.log(res.data)
+        this.setState({
+          base_currencies: res.data.currencies,
+          target_currencies: res.data.currencies,
+          target_amount: res.data.target_amount,
+        })
+      })
+      .catch(err => console.log(err))
   }
 
 
@@ -47,7 +61,7 @@ class App extends React.Component {
               <option>{element}</option>
               )}
           </select>
-          <input placeholder={base_amount}/>
+          <input placeholder={base_amount} onChange={e => this.handleConversion(e.target.value)}/>
 
           <br/>
           
@@ -57,7 +71,7 @@ class App extends React.Component {
               <option>{element}</option>
               )}
           </select>
-          <input placeholder={target_amount}/>
+          <input placeholder={parseFloat(target_amount).toFixed(2)}/>
         </form>
       </div>
     );
