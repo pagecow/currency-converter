@@ -186,6 +186,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 33%;
+    margin-left: 15.3%;
     margin-right: 40px;
 }
 
@@ -253,4 +254,33 @@ ul li:before {
     font-weight: bold;
     margin-right: 5px;
     margin-left: -38px;
+}
+
+@media (max-width: 1000px) {
+    #menu {
+        display: none;
+    }
+
+    #currency-converter-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .heading-2 {
+        word-wrap: break-word;
+    }
+
+    #footer-1 {
+        display: flex;
+        padding-left: 0%;
+        height: 60vh;
+        width: 100%;
+        padding-top: 38px;
+        background-color: #171f2a;
+        font-family: Montserrat;
+        color: white;
+    }
 }
