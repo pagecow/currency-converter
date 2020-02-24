@@ -103,11 +103,26 @@ class App extends React.Component {
         </body>
 
         <footer id="footer-1">
-
+          <div className="left-footer-text">
+            <h5 className="about">About Us</h5>
+            <img className="bottom-logo" src="http://ecbiz196.inmotionhosting.com/~mmsgus5/wp-content/uploads/2016/05/mmsg_footer_2.png"/>
+            <p className="bottom-description">We are a boutique medical education company with KOL relationships spanning more than 25 years.</p>
+            <p className="address">100 Franklin Square Drive, Suite 430, Somerset, NJ 08873</p>
+          </div>
+          <div className="right-footer-text">
+            <h5 className="general-info">General Information</h5>
+            <ul>
+              <a href="http://www.mmsg.us/"><li>Home</li></a>
+              <a href="http://www.mmsg.us/management/"><li>Leadership</li></a>
+              <a href="http://www.mmsg.us/philosophy/"><li>Philosopy</li></a>
+              <a href="http://www.mmsg.us/testimonials/"><li>Testimonials</li></a>
+            </ul>
+            
+          </div>
         </footer>
 
         <footer id="footer-2">
-          
+          <p>© 2020 MMSG. All rights reserved.</p>
         </footer>
         
       </div>
