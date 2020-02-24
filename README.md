@@ -1,5 +1,7 @@
 This app is a currency converter based on the live currency rates retrieved from [https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml](https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml).
 
+##`Installation instructions:`
+
 Clone the repository. 
 
 ### `npm install`
