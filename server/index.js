@@ -1,4 +1,6 @@
+require('dotenv').config();
 const express = require('express');
+const {SERVER_PORT} = process.env;
 const https = require('https');
 const xml2js = require('xml2js');
 const parser = new xml2js.Parser({ attrkey: "ATTR" });
@@ -69,5 +71,5 @@ app.post('/api/ecb/forex/stats', async(req, res) => {
     res.status(200).send({currencies: currencies, target_amount: target_amount.toString()});
 })
 
-const port = 7777;
+const port = SERVER_PORT;
 app.listen(port, () => console.log(`Port running on port ${port}`));
