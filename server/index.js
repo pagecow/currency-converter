@@ -7,6 +7,8 @@ const parser = new xml2js.Parser({ attrkey: "ATTR" });
 
 const app = express();
 
+app.use( express.static( `${__dirname}/../build` ) );
+
 app.use(express.json());
 
 app.post('/api/ecb/forex/stats', async(req, res) => {
