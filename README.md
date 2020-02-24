@@ -8,6 +8,12 @@ Clone the repository.
 
 To install dependencies.
 
+### `Create a .env file in the root of the project`
+
+### `Enter the .env file and type SERVER_PORT=7777 in the .env file`
+
+To add the port.
+
 ### `nodemon`
 
 To turn on server.
