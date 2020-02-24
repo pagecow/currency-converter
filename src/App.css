@@ -82,7 +82,7 @@ body {
     padding-bottom: 20px;
     border: 1px solid rgb(230,230,230);
     border-radius: 6px;
-    background-color: rgb(250,250,250);
+    background-color: #f9faf5;
     font-family: Roboto,Arial,sans-serif;
 }
 
@@ -176,7 +176,7 @@ body {
     padding-left: 15.3%;
     height: 50vh;
     width: 100%;
-    padding-top: 10px;
+    padding-top: 30px;
     background-color: #171f2a;
     font-family: Montserrat;
     color: white;
