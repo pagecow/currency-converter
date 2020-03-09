@@ -12,7 +12,7 @@ class App extends React.Component {
         base_amount: '1',
         target_currencies: [],
         target_currency: 'USD',
-        target_amount: '1.08',
+        target_amount: '0',
     }
   }
 

@@ -283,3 +283,9 @@ ul li:before {
         color: white;
     }
 }
+
+@media (max-width: 370px) {
+    .input {
+        max-width: 50%;
+     }
+}
