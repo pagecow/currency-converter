@@ -117,7 +117,7 @@ class App extends React.Component {
               <a href="#"><li>Home</li></a>
               <a href="#"><li>About Us</li></a>
               <a href="#"><li>Contact</li></a>
-/            </ul>
+            </ul>
             
           </div>
         </footer>
