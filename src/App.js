@@ -57,7 +57,7 @@ class App extends React.Component {
     
     return (
       <div className="App">
-        <header>
+        {/* <header>
           <img src="http://www.mmsg.us/wp-content/uploads/2016/05/mmsg_no_caption_2.png" id="logo"/>
 
           <nav id="menu">
@@ -66,12 +66,14 @@ class App extends React.Component {
             <a href="http://www.mmsg.us/philosophy/"><p className="menu-items">PHILOSOPHY</p></a>
             <a href="http://www.mmsg.us/testimonials/"><p className="menu-items">TESTIMONIALS</p></a>
           </nav>
+        </header> */}
+
+        <header id="heading">
+            <h4 className="page-title">Currency Converter</h4>
         </header>
         
         <body>
-          <div id="heading">
-            <h4 className="page-title">Currency Converter</h4>
-          </div>
+         
           
           <div id="currency-converter-box">
             <div id="description">
@@ -105,24 +107,23 @@ class App extends React.Component {
         <footer id="footer-1">
           <div className="left-footer-text">
             <h5 className="about">About Us</h5>
-            <img className="bottom-logo" src="http://ecbiz196.inmotionhosting.com/~mmsgus5/wp-content/uploads/2016/05/mmsg_footer_2.png"/>
-            <p className="bottom-description">We are a boutique medical education company with KOL relationships spanning more than 25 years.</p>
-            <p className="address">100 Franklin Square Drive, Suite 430, Somerset, NJ 08873</p>
+            {/* <img className="bottom-logo" src="http://ecbiz196.inmotionhosting.com/~mmsgus5/wp-content/uploads/2016/05/mmsg_footer_2.png"/> */}
+            <p className="bottom-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            {/* <p className="address">100 Franklin Square Drive, Suite 430, Somerset, NJ 08873</p> */}
           </div>
           <div className="right-footer-text">
             <h5 className="general-info">General Information</h5>
             <ul>
-              <a href="http://www.mmsg.us/"><li>Home</li></a>
-              <a href="http://www.mmsg.us/management/"><li>Leadership</li></a>
-              <a href="http://www.mmsg.us/philosophy/"><li>Philosopy</li></a>
-              <a href="http://www.mmsg.us/testimonials/"><li>Testimonials</li></a>
-            </ul>
+              <a href="#"><li>Home</li></a>
+              <a href="#"><li>About Us</li></a>
+              <a href="#"><li>Contact</li></a>
+/            </ul>
             
           </div>
         </footer>
 
         <footer id="footer-2">
-          <p>© 2020 MMSG. All rights reserved.</p>
+          <p>© 2020 TJM. All rights reserved.</p>
         </footer>
         
       </div>
